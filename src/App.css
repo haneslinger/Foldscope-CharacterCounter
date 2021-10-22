@@ -6,7 +6,6 @@
 }
 
 .header {
-  @apply h-20;
   @apply bg-black;
   @apply text-gray-100 align-bottom text-lg;
 }
@@ -32,7 +31,6 @@
 }
 
 .textarea {
-  @apply flex-grow;
   @apply w-1/2 overflow-y-auto resize-none mr-4 p-4;
   @apply max-w-screen-md;
   @apply bg-white break-words;
