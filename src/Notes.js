@@ -15,19 +15,20 @@ class Notes extends React.Component {
           </li>
           <li>
             {" "}
-            - The counter works in O(nlogn) time, where n is the number of
-            characters. The character frquency it found in O(n) time by
-            iterating through the text and incrementing the value of the
-            charcater key. The top five most frequent character is found by
-            sorting the dicts keys by their values, and taking the top 5. this
-            sorting is O(nlogn)
+            - In the case of a tie, the 5 most frequent go to the characters
+            that appear first.
           </li>
           <li>
             {" "}
-            - The top five most frequent character could be found in O(n) by
-            iterating over the dict and keeping track of only the 5 more
-            frequent characters and their frenqucy in a prioity Queue. I didn't
-            implement this for sake of time.
+            - The character frquency it found in O(n) time by creating a dict,
+            iterating through the text, and incrementing the value of the
+            charcater key.
+          </li>
+          <li>
+            {" "}
+            - The top five most frequent character is found in O(n) by iterating
+            over the character frquency and keeping track of only the 5 more
+            frequent characters and their frenqucy in a prioity Queue.
           </li>
         </ul>
       </div>

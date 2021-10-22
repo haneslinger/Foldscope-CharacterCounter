@@ -4,11 +4,11 @@ class CountedTextBox extends React.Component {
   render() {
     return (
       <div class="textarea">
-        {this.props.text.split("").map((character) => {
+        {this.props.text.split("").map((character, i) => {
           if (this.props.highlightedCharacters.includes(character)) {
-            return <mark key={character}>{character}</mark>;
+            return <mark key={i}>{character}</mark>;
           } else {
-            return <span key={character}>{character}</span>;
+            return <span key={i}>{character}</span>;
           }
         })}
       </div>
