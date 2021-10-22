@@ -1,37 +1,9 @@
 import React from "react";
 import "./App.css";
 import Notes from "./Notes";
-import Prompt from "./Prompt";
-import CountedTextBox from "./CountedTextBox";
-import InputTextBox from "./InputTextBox";
-import CountDisplay from "./CountDisplay";
-
-function countCharacters(text) {
-  var count = {};
-  text.split("").forEach((val) => (count[val] = (count[val] || 0) + 1));
-  return count;
-}
-
-function getMostFrequentCharacters(characterCount) {
-  const characters = Object.keys(characterCount);
-
-  // take the first five and sort them by frequ
-  const fiveMostFrequ = characters
-    .slice(0, 5)
-    .sort((a, b) => characterCount[a] - characterCount[b]);
-
-  // for each char, if its more frequent than least frequent in fiveMostFrequ,
-  // replace least frequent fiveMostFrequ and resort.
-  // we could do this without sorting but it's all constant time anyway.
-  characters.slice(5).forEach((character) => {
-    if (characterCount[character] > characterCount[fiveMostFrequ[0]]) {
-      fiveMostFrequ[0] = character;
-      fiveMostFrequ.sort((a, b) => characterCount[a] - characterCount[b]);
-    }
-  });
-
-  return fiveMostFrequ;
-}
+import TextBox from "./TextBox";
+import ResultsDisplay from "./ResultsDisplay";
+import { countCharacters, getMostFrequentCharacters } from "./BusinessLogic";
 
 class App extends React.Component {
   constructor(props) {
@@ -79,23 +51,18 @@ class App extends React.Component {
             clear
           </button>
           <div class="workarea">
-            {this.state.showInputView ? (
-              <InputTextBox text={this.state.text} onChange={this.changeText} />
-            ) : (
-              <CountedTextBox
-                text={this.state.text}
+            <TextBox
+              showInputView={this.state.showInputView}
+              text={this.state.text}
+              onChange={this.changeText}
+              highlightedCharacters={this.state.mostFrequentCharacters}
+            />
+            <div class="results">
+              <ResultsDisplay
+                showInputView={this.state.showInputView}
+                characterCount={this.state.characterCount}
                 highlightedCharacters={this.state.mostFrequentCharacters}
               />
-            )}
-            <div class="results">
-              {this.state.showInputView ? (
-                <Prompt />
-              ) : (
-                <CountDisplay
-                  characterCount={this.state.characterCount}
-                  highlightedCharacters={this.state.mostFrequentCharacters}
-                />
-              )}
             </div>
           </div>
           <div class="info">
