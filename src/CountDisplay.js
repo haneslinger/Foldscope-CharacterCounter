@@ -11,7 +11,7 @@ class CountDisplay extends React.Component {
                 class={
                   this.props.highlightedCharacters.includes(character)
                     ? "result bg-yellow-300 rounded-l"
-                    : "result bg-gray-300 rounded-l"
+                    : "result bg-gray-400 rounded-l"
                 }
               >
                 {character}
